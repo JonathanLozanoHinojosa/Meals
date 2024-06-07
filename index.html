@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jonatan Lozano">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="main.js" type="module"></script>
+    <title>World's food</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+
+    
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+</head>
+<body>
+    <header id="header-container">
+
+        <nav class="navbar navbar-expand-lg fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="float-start d-block" href="#">
+                    <img src="images/logo.png" alt="Logo" width="20" height="40" class="d-inline-block align-text-top"/>
+                </a>
+
+                <a class="navbar-brand" href="#">
+                    <h1>World's food</h1>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav navbar-center">
+
+                       <!-- <li class="nav-item dropdown dropdown-cols-2">
+                            <a class="nav-link activo2 dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" aria-current="page" href="#">Recipes</a>
+                            <div class="dropdown-menu">
+                                <div>
+                                  <ul>
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                  </ul>
+                                </div>
+                                
+                                <div>
+                                    <ul>
+                                      <li><a href="#">Action</a></li>
+                                      <li><a href="#">Another action</a></li>
+                                      <li><a href="#">Something else here</a></li>
+                                      <li><a href="#">Separated link</a></li>
+                                      <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                  </div>
+                                  
+                                <div>
+                                  <ul>
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                  </ul>
+                                </div>
+                                </div>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="recipes.html">Recipes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="favourites.html">Favourites</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="game.html">Game</a>
+                        </li>
+                    </ul>
+                
+                    <!-- <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form> -->
+                </div>
+            </div>
+          </nav>
+    </header>
+
+    <div id='main-container' class='container'>
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-label="Slide 0" aria-current="true"></button>
+              <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 1" ></button>
+              <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 2" ></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100 h-100 opacity-75 imagen" src="images/pasta.jpg" alt="First slide">
+                    <div class="carousel-caption carousel-text">
+                        <h4>Cook pasta like Italian people</h4>
+                        <p>Learn the art of cooking the real italian food.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 h-100 opacity-75 imagen" src="images/dessert.jpg" alt="Second slide">
+                    <div class="carousel-caption carousel-text">
+                        <h4>New desserts enables</h4>
+                        <p>The best bakers of the world, explain his recipes to do the best cakes.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 h-100 opacity-75 imagen" src="images/recipe.jpg" alt="Third slide">
+                    <div class="carousel-caption carousel-text">
+                        <h4>New recipes</h4>
+                        <p>Everyday, the best chefs add 2 new recipes.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+
+    <div class="container">
+        <hr class="featurette-divider">
+
+        
+        <div class="row featurette">
+            <div class="col-md-12">
+                <p>Learn to prepare hundreds of quick and easy recipes. With detailed explanations, step-by-step photos and explanatory videos.</p>
+                <p>Enjoy the pleasure of cooking typical recipes from up to 34 different countries. You add recipes to favorites to cook them later
+                 and rate them. Find easy ideas for dinner, breakfast,...</p>
+                <p>In the latest update of the website, a small interactive game has been introduced to enjoy with the little ones at home
+                 while enjoying the pleasure of cooking.</p>
+            </div>
+        </div>
+
+      
+
+    </div>
+
+    <noscript>
+        <strong> Please, enable Javascript on the browser.</strong>
+    </noscript>
+</body>
+</html>

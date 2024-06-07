@@ -1,0 +1,144 @@
+{"flags" : 
+    [
+        {
+            "flag": "US.png",
+            "country": "United States",
+            "code": "American"
+        },
+        {
+            "flag": "GB.png",
+            "country": "United Kingdom",
+            "code": "British"
+        },
+        {
+            "flag": "CA.png",
+            "country": "Canada",
+            "code": "Canadian"
+        }, 
+        {
+            "flag": "CN.png",
+            "country": "China",
+            "code": "Chinese"
+        }, 
+        {
+            "flag": "HR.png",
+            "country": "Croatia",
+            "code": "Croatian"
+        }, 
+        {
+            "flag": "NL.png",
+            "country": "Netherlands",
+            "code": "Dutch"
+        }, 
+        {
+            "flag": "EG.png",
+            "country": "Egypt",
+            "code": "Egyptian"
+        }, 
+        {
+            "flag": "PH.png",
+            "country": "Philippines",
+            "code": "Filipino"
+        }, 
+        {
+            "flag": "FR.png",
+            "country": "France",
+            "code": "French"
+        },  
+        {
+            "flag": "GR.png",
+            "country": "Greece",
+            "code": "Greek"
+        }, 
+        {
+            "flag": "IN.png",
+            "country": "India",
+            "code": "Indian"
+        }, 
+        {
+            "flag": "IE.png",
+            "country": "Ireland",
+            "code": "Irish"
+        }, 
+        {
+            "flag": "IT.png",
+            "country": "Italy",
+            "code": "Italian"
+        }, 
+        {
+            "flag": "JM.png",
+            "country": "Jamaica",
+            "code": "Jamaican"
+        }, 
+        {
+            "flag": "JP.png",
+            "country": "Japan",
+            "code": "Japanese"
+        }, 
+        {
+            "flag": "KEpng",
+            "country": "Kenya",
+            "code": "Kenyan"
+        }, 
+        {
+            "flag": "MY.png",
+            "country": "Malaysia",
+            "code": "Malaysian"
+        }, 
+        {
+            "flag": "MX.png",
+            "country": "Mexico",
+            "code": "Mexican"
+        }, 
+        {
+            "flag": "MA.png",
+            "country": "Morocco",
+            "code": "Moroccan"
+        }, 
+        {
+            "flag": "PL.png",
+            "country": "Poland",
+            "code": "Polish"
+        },
+        {
+            "flag": "PT.png",
+            "country": "Portugal",
+            "code": "Portuguese"
+        },
+        {
+            "flag": "RU.png",
+            "country": "Russian Federation",
+            "code": "Russian"
+        },
+        {
+            "flag": "ES.png",
+            "country": "Spain",
+            "code": "Spanish"
+        },
+        {
+            "flag": "TH.png",
+            "country": "Thailand",
+            "code": "Thai"
+        },
+        {
+            "flag": "TR.png",
+            "country": "Turkey",
+            "code": "Tunisian"
+        },
+        {
+            "flag": "UA.png",
+            "country": "Ukraine",
+            "code": "Ukrainian"
+        },
+        {
+            "flag": "UKN.png",
+            "country": "Unknown",
+            "code": "Unknown"
+        }, 
+        {
+            "flag": "VN.png",
+            "country": "Vietnam",
+            "code": "Vietnamese"
+        }
+    ]
+}

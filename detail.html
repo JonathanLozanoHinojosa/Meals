@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jonatan Lozano">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="detail.js" type="module"></script>
+    <title>World's food</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+
+    
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+</head>
+<body>
+    <header id="header-container">
+
+        <nav class="navbar navbar-expand-lg fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="float-start d-block" href="index.html">
+                    <img src="images/logo.png" alt="Logo" width="20" height="40" class="d-inline-block align-text-top"/>
+                </a>
+
+                <a class="navbar-brand" href="index.html">
+                    <h1>World's food</h1>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav navbar-center">
+
+                        <li class="nav-item">
+                            <a class="nav-link activo" href="recipes.html">Recipes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="favourites.html">Favourites</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="game.html">Game</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+          </nav>
+    </header>
+
+    <div id='main-content' class='container detail'>
+        
+    </div>
+
+   
+
+    <noscript>
+        <strong> Please, enable Javascript on the browser.</strong>
+    </noscript>
+
+    <template id="informacion">
+        <img id="flag" alt="" src=""/><h1 id='name'>XXXXXXXX</h1>
+
+        <div class="star-container">
+            <div class="star star-gray"></div>
+            <div class="star star-gray"></div>
+            <div class="star star-gray"></div>
+            <div class="star star-gray"></div>
+            <div class="star star-gray"></div>
+        </div>
+
+        <h3 id='catAreaTag'> XXXXXXX </h3>
+
+        <img id='image' src="XXX" alt="XXX">
+
+        <h2>Ingredients & measures</h2>
+        <ul id='ingredients'>
+            <li id="1">XXX</li>
+            <li id="2">XXX</li>
+            <li id="3">XXX</li>
+            <li id="4">XXX</li>
+            <li id="5">XXX</li>
+            <li id="6">XXX</li>
+            <li id="7">XXX</li>
+            <li id="8">XXX</li>
+            <li id="9">XXX</li>
+            <li id="10">XXX</li>
+            <li id="11">XXX</li>
+            <li id="12">XXX</li>
+            <li id="13">XXX</li>
+            <li id="14">XXX</li>
+            <li id="15">XXX</li>
+            <li id="16">XXX</li>
+            <li id="17">XXX</li>
+            <li id="18">XXX</li>
+            <li id="19">XXX</li>
+            <li id="20">XXX</li>
+        </ul>
+
+        <h2>Instructions</h2>
+        <p id='instruction'>XXX</p>
+        
+        <h2>Video</h2>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/4aZr5hZXP_s?si=Cpy4YdkxkkBeQUGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </template>
+</html>

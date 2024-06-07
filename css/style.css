@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;font-family: 'Cactus Classical Serif', sans-serif; /* copiado de google fonts */
+}
+
+html body {
+    background-color: #e7e7e7;
+}
+
+body header#header-container .bg-dark{
+    background-color: #95BF8F !important;
+}
+
+.navbar-brand h1 { /* Estilo al nombre del restaurante */
+	color: #557c3e;
+	font-size: 1.5em; /* aumentar tamaño de la fuente */
+	text-transform: uppercase; /* mayúsculas */
+	font-weight: bold; /* negrita */
+	text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+    margin:5px 0 0 10px;
+}
+
+a.nav-link {
+    font-weight: bold;
+    color: #e7e7e7;
+    text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+    padding: 10px 15px !important;
+    text-align: center;
+}
+
+a.nav-link:hover {
+    background-color: rgb(4, 59, 13);
+    color: #e7e7e7;
+    text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+}
+
+a.activo {
+    border-bottom: 2px solid rgb(4, 59, 13);
+}
+
+#main-container {
+    margin-top: 2px;
+    align-items: center;
+    size: 80%;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 20rem;
+}
+  
+#carousel-items img {
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+  
+button.carousel-control-next , button.carousel-control-prev, .carousel-indicators [data-bs-target] {
+    opacity: 1;
+}
+#carousel .carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color:#557c3e;
+}
+
+.carousel-text {
+    background-color: rgba(55, 124, 62, 0.4);
+    border: 1px solid rgb(4, 59, 13);
+    color: #e7e7e7;
+	text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+}
+
+.featurette-divider {
+    margin: 1rem 0; /* Space out the Bootstrap <hr> more */
+    color:rgb(4, 59, 13)
+}
+
+@media (min-width: 992px) {
+    .navbar-nav.navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translatex(-50%);
+    }
+}
+
+/******** TODOS ********/
+#main-container, #main-content {
+    margin-top: 70px;
+}
+
+/*
+.dropdown-cols-2 .dropdown-menu {
+    min-width: 800px;
+}
+
+.dropdown-cols-2 .dropdown-menu > div {
+    float: left;      
+    padding: 10px 20px;  
+}
+*/
+
+/*************** MASTER **************/
+.category-tile { 
+    position: relative; /* título relativo */
+    overflow: hidden; /* desbordamiento oculto. Si hay algo que sobresale que no se vea */
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 15px; /* arriba 0, derecha e izq centrado auto y abajo 15px */
+}
+
+.category-tile span.title { /* Texto */
+    position: absolute; /* absoluto */
+    bottom: 0; /* posicionado en el 0 inferior */
+    right: 0; /* y 0 derecha */
+    width: 100%; /* y ancho 100% */
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    opacity: .7;
+}
+  
+  /* Efecto cuando se pasa por encima */
+.category-tile:hover {
+    color: green;
+}
+  
+h1.numItems {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.category-tile img {
+    width:100%;
+    height:100%;
+}
+
+/****************** detail.html ******************/
+
+.detail {
+    text-align: center;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+.star-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+.star {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+  
+.star-gray {
+    background-image: url(../images/star-gray.png);
+}
+  
+.star-pink {
+    background-image: url(../image/star-pink.png);
+}
+
+#catAreaTag {
+    font-size: 0.7em;
+}
+
+#flag {
+    margin-top: 20px;
+}
+
+#image {
+    height: 400px;
+    object-fit: cover;
+    object-position: bottom;
+    border: 5px solid #95BF8F;
+}
+/******************************************************/
+
+
+/********************* SPINNER *******************/
+
+#spinner {
+    width: 10rem;
+    height: 10rem;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #557c3e;
+    border-radius: 100%;
+    margin-top: 15%;
+    visibility: hidden;
+    animation: spin 1s infinite ease-in-out;
+}
+
+#spinner.display {
+    visibility: visible;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
