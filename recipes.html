@@ -52,17 +52,25 @@
                     </ul>
                 </div>
 
-                <form class="d-flex float-end d-block" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div class="d-flex float-end d-block" role="search">
+                    <input id="palabraABuscar" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button id="buscar" class="btn btn-outline-success" type="submit">Search</button>
+                </div>
 
             </div>
           </nav>
     </header>
 
     <div id='main-content' class='container'>
-        <h1 class="numItems"> </h1>
+        <div id="ordenacionItems">
+            <h1 class="numItems"> </h1>
+            <select class="form-select" id="select" aria-label="Default select example">
+                <option selected>Order by</option>
+                <option value="1">A-Z</option>
+                <option value="2">Z-A</option>
+            </select>
+        </div>
+
         <section class="row">
             
         </section>

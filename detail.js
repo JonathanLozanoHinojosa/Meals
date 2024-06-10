@@ -1,12 +1,29 @@
 const div = document.querySelector('#main-content');
+const stars = document.querySelectorAll("div.star-container div.star");
 
 let params = new URLSearchParams(document.location.search);
 let nombreReceta = params.get("s");
 //console.log(typeof(nombreReceta))
 nombreReceta = nombreReceta.replaceAll(' ', '%20');
 
+let rating = 0;
+
+// entries() proporciona pares  indice:valor
+for (const [index, star] of stars.entries()) {
+  //console.log(index, star)
+  star.addEventListener("click", () => {
+    console.log("Rating seleccionat =" , index+1);
+    for (const [index2, star] of stars.entries()) {
+      index >= index2 ? star.classList.add("star-pink") : star.classList.remove("star-pink");
+    }
+  });
+}
+
+
 const infosReceta = await getReceta(nombreReceta);
 
+
+/************************** OBTENCIÓ DE RECEPTA SELECCIONADA API **************************/
 async function getReceta(nombreReceta) {
     try {
         // Accedeix a la API i recupera dades
@@ -22,6 +39,8 @@ async function getReceta(nombreReceta) {
     }
 }
 
+
+/************************** OBTENCIÓ DE FLAGS JSON **************************/
 async function getFlag(gentilicio) {
     const response = await fetch("./module/countries.json");
     const flags = await response.json();
@@ -33,7 +52,8 @@ async function getFlag(gentilicio) {
 }
 
 
-// sin el async await recetas sería una promesa
+
+/************************** MOSTRAR LES DADES **************************/
 async function mostrarReceta(infosReceta) {
     
     const template = document.querySelector('#informacion').content;
