@@ -2,6 +2,9 @@ const section = document.querySelector('section');
 const spinner = document.querySelector("#spinner");
 const busqueda = document.querySelector("#buscar");
 
+/**** FRAGMENT **********/
+const fragment = document.createDocumentFragment();
+
 let recetasBackup = [];
 const recetas = await getAllData();
 
@@ -100,8 +103,12 @@ function mostrarDatos(recetas) {
         fr.querySelector(".title").textContent = receta.strMeal;
         fr.querySelector("a").href = 'detail.html?s='+receta.idMeal;
         
-        section.appendChild(fr); // Mostrar en el DOM*/
+        //section.appendChild(fr); // Mostrar en el DOM*/
+        /* FRAGMENT */
+        fragment.appendChild(fr);
     }
+    /* AÑADIR EL FRAGMENT AL CONTENEDOR */
+    section.appendChild(fragment);
     mostrarNumeroRecetas(recetas);
 }
 
