@@ -180,7 +180,7 @@ ul {
     flex-direction: row;
     gap: 10px;
     margin-left: 40px;
-  }
+}
 
 .star {
     width: 20px;
@@ -198,6 +198,31 @@ ul {
     background-image: url(../images/star-pink.png);
 }
 
+/********************* LIKE **********************/
+
+.fav-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 40px;
+}
+
+.fav {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-bottom: 20px; /* REMOVE */
+}
+  
+.fav-gray {
+    background-image: url(../images/fav-gray.png);
+}
+  
+.fav-pink {
+    background-image: url(../images/fav-pink.png);
+}
 /********************* SPINNER *******************/
 
 #spinner {
