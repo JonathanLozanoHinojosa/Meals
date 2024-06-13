@@ -2,9 +2,6 @@ const section = document.querySelector('section');
 const spinner = document.querySelector("#spinner");
 const busqueda = document.querySelector("#buscar");
 
-/**** FRAGMENT **********/
-const fragment = document.createDocumentFragment();
-
 let recetasBackup = [];
 const recetas = await getAllData();
 
@@ -93,6 +90,9 @@ function mostrarDatos(recetas) {
     
     clearDiv();
     const div = document.querySelector('#recetas').content;
+    
+    /**** FRAGMENT **********/
+    const fragment = document.createDocumentFragment();
     
     //console.log(recetas)
     for (const receta of recetas.meals) {
