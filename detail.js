@@ -3,16 +3,16 @@ const stars = document.querySelectorAll("div.star-container div.star");
 const fav = document.querySelector("div.fav-container div.fav");
 
 let params = new URLSearchParams(document.location.search);
-let nombreReceta = params.get("s");
+let idReceta = params.get("s");
 
 let bandera = '';
 let arrayFavoritos = [];
 let favoritoEncontrado = false;
 
-//console.log(typeof(nombreReceta))
-nombreReceta = nombreReceta.replaceAll(' ', '%20');
+//console.log(typeof(idReceta))
+//idReceta = idReceta.replaceAll(' ', '%20');
 
-const infosReceta = await getReceta(nombreReceta);
+const infosReceta = await getReceta(idReceta);
 
 
 /*************** RATING **********************************/
@@ -78,10 +78,10 @@ function deleteFavourite(id, name) {
 
 
 /************************** OBTENCIÓ DE RECEPTA SELECCIONADA API **************************/
-async function getReceta(nombreReceta) {
+async function getReceta(idReceta) {
     try {
         // Accedeix a la API i recupera dades
-        const apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s="+nombreReceta;
+        const apiUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="+idReceta;
         const response = await fetch(apiUrl); 
         const receta = await response.json();
     

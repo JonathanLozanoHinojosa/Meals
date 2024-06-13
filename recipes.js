@@ -98,7 +98,7 @@ function mostrarDatos(recetas) {
         fr.querySelector("img").src = receta.strMealThumb; //+"/preview";
         fr.querySelector("img").alt= receta.strMeal;  
         fr.querySelector(".title").textContent = receta.strMeal;
-        fr.querySelector("a").href = 'detail.html?s='+receta.strMeal;
+        fr.querySelector("a").href = 'detail.html?s='+receta.idMeal;
         
         section.appendChild(fr); // Mostrar en el DOM*/
     }
