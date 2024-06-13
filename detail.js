@@ -6,28 +6,104 @@ let params = new URLSearchParams(document.location.search);
 let idReceta = params.get("s");
 
 let bandera = '';
+
+// Favoritos
 let arrayFavoritos = [];
 let favoritoEncontrado = false;
+
+// Ratings
+let arrayRating = [];
+let ratingEncontrado = false;
+let rating = 0;
 
 //console.log(typeof(idReceta))
 //idReceta = idReceta.replaceAll(' ', '%20');
 
+addEventsToStars();
 const infosReceta = await getReceta(idReceta);
 
 
 /*************** RATING **********************************/
-let rating = 0;
 
-// entries() proporciona pares  indice:valor
-for (const [index, star] of stars.entries()) {
-  //console.log(index, star)
-  star.addEventListener("click", () => {
-    //console.log("Rating seleccionat =" , index+1);
-    for (const [index2, star] of stars.entries()) {
-      index >= index2 ? star.classList.add("star-pink") : star.classList.remove("star-pink");
+function actualizaRating(event) {
+    for (const [index, star] of stars.entries()) {
+        if (event.target === star) {
+            rating = index + 1;
+        }
     }
-  });
+    
+
+    resetStars();
+    addCssStars();
 }
+
+function resetStars() {
+     // RESET DEL CSS EN TODAS LAS ESTRELLAS
+     for (const star of stars){
+        star.classList.remove("star-pink");
+    }
+    
+    localStorage.removeItem("ratingMeals");
+    arrayRating = arrayRating.filter( el => el.name !== infosReceta.meals[0].strMeal &&  el.id !== infosReceta.meals[0].idMeal)
+    localStorage.setItem('ratingMeals', JSON.stringify(arrayRating));
+}
+
+function addCssStars() {
+    // AÑADE EL CSS A LAS ESTRELLAS QUE TOCA
+    paintStars();
+    ratingEncontrado = true;
+    arrayRating.push({'id': infosReceta.meals[0].idMeal, 'name': infosReceta.meals[0].strMeal, 'rating': rating});
+    localStorage.setItem('ratingMeals', JSON.stringify(arrayRating));
+}
+
+function addEventsToStars() {
+    for (const star of stars){
+        star.addEventListener('click', actualizaRating)
+    }
+}
+
+function paintStars() {
+   for (const [index, star] of stars.entries()){
+        if (index < rating) {
+            star.classList.add("star-pink");
+        }
+    }
+}
+
+function getRating(receta){
+    const storedUserData = localStorage.getItem('ratingMeals');
+   
+    if (storedUserData) {
+        arrayRating = JSON.parse(storedUserData);
+        for (const rate of arrayRating){
+            if(rate.id === receta.meals[0].idMeal && rate.name === receta.meals[0].strMeal) {
+                ratingEncontrado = true;
+                rating = rate.rating;
+            }
+        }
+        
+        if (ratingEncontrado){
+           paintStars(rating);
+        }
+    }     
+}
+/*
+function addRating(id, name, rating) {    
+    console.log("ADDING"+id+" "+name+ " "+rating);
+    ratingEncontrado = true;
+    arrayRating.push({'id': id, 'name': name, 'rating': rating});
+    localStorage.setItem('ratingMeals', JSON.stringify(arrayRating))
+}
+
+function deleteRating(id, name, rating) {
+    console.log("ADDING"+id+" "+name+ " "+rating);
+    ratingEncontrado = false;
+    //localStorage.clear();
+    localStorage.removeItem("ratingMeals");
+    arrayRating = arrayRating.filter( el => el.name !== name &&  el.id !== id)
+    localStorage.setItem('ratingMeals', JSON.stringify(arrayRating))
+}
+*/
 
 /*********** FAVORITOS / LIKE ******************/
 //let favorito = false;
@@ -71,7 +147,8 @@ function addFavourite(id, name) {
 
 function deleteFavourite(id, name) {
     favoritoEncontrado = false;
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem("favouriteMeals");
     arrayFavoritos = arrayFavoritos.filter( el => el.name !== name &&  el.id !== id)
     localStorage.setItem('favouriteMeals', JSON.stringify(arrayFavoritos))
 }
@@ -89,6 +166,7 @@ async function getReceta(idReceta) {
         bandera = await getFlag(receta.meals[0].strArea)
         mostrarReceta(receta)
         getAllFavourites(receta);
+        getRating(receta);
         return receta;
         //console.log(receta.meals[0].idMeal);
         //console.log(receta.meals[0].strMeal);
