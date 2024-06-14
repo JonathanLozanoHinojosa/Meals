@@ -83,11 +83,17 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
       left: 50%;
       transform: translatex(-50%);
     }
+    
 }
 
 /******** TODOS ********/
 #main-container, #main-content {
     margin-top: 120px;
+}
+@media (min-width: 725px) {
+    #main-container, #main-content {
+        margin-top: 80px;
+    }
 }
 
 /*
@@ -171,6 +177,7 @@ ul {
     object-position: bottom;
     border: 5px solid #95BF8F;
 }
+
 /******************************************************/
 
 /********************** ESTRELLAS ********************/
