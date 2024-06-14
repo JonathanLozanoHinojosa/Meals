@@ -86,13 +86,19 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     
 }
 
-/******** TODOS ********/
+/******** TODOS PARA PREVENIR EL SALTO DE LA BÚSQUEDA ********/
 #main-container, #main-content {
-    margin-top: 120px;
+    margin-top: 80px;
 }
-@media (min-width: 725px) {
+@media (max-width: 725px) {
     #main-container, #main-content {
-        margin-top: 80px;
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 540px) {
+    #main-container, #main-content {
+        margin-top: 150px;
     }
 }
 
@@ -146,9 +152,17 @@ h1.numItems {
     display: inline-block;
 }
 
-#select {
-    width: 25%;
+@media (max-width: 725px) {
+    #select {
+        width: 30%;
+    }
 }
+@media (min-width: 730px) {
+    #select {
+        width: 20%;
+    }
+}
+
 
 section.row{
     margin-top: 20px;
