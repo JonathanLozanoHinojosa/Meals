@@ -257,7 +257,12 @@ function validarFormulario() {
     const inputUsername = document.querySelector('#inputUsername').value;
     const textareaComentario = document.querySelector('#textareaComentario').value;
     const date = new Date();
-    const fecha = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`;
+    const day = (date.getDate() < 10 ? '0' : '') + date.getDate();
+    const month = (date.getMonth() < 10 ? '0' : '') + date.getMonth();
+    const year = date.getFullYear();
+    const hours = (date.getHours() < 10 ? '0' : '') + date.getHours();
+    const minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+    const fecha = `${day}/${month}/${year} - ${hours}:${minutes}`;
     
     if (inputUsername.length > 0 && textareaComentario.length > 0) {
 
@@ -278,7 +283,7 @@ function validarFormulario() {
         setTimeout(function(){
             modalComentario.hide()
         }, 2000);
-        
+
         limpiarFormulario(inputUsername, textareaComentario);
     }
 }
