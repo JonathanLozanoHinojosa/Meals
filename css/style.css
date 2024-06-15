@@ -345,3 +345,12 @@ input#a {
     background-color: rgb(4, 59, 13);
     color: white;
 }
+
+/*** FORMULARIO ***/
+form div, form button#botonComentario {
+    margin: 10px;
+}
+
+input#username, form div textarea{
+    width: 50%;
+}
