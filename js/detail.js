@@ -16,6 +16,9 @@ let arrayRating = [];
 let ratingEncontrado = false;
 let rating = 0;
 
+// Comentarios
+let arrayComentarios = [];
+
 //console.log(typeof(idReceta))
 //idReceta = idReceta.replaceAll(' ', '%20');
 
@@ -31,7 +34,6 @@ function actualizaRating(event) {
             rating = index + 1;
         }
     }
-    
 
     resetStars();
     addCssStars();
@@ -87,23 +89,7 @@ function getRating(receta){
         }
     }     
 }
-/*
-function addRating(id, name, rating) {    
-    console.log("ADDING"+id+" "+name+ " "+rating);
-    ratingEncontrado = true;
-    arrayRating.push({'id': id, 'name': name, 'rating': rating});
-    localStorage.setItem('ratingMeals', JSON.stringify(arrayRating))
-}
 
-function deleteRating(id, name, rating) {
-    console.log("ADDING"+id+" "+name+ " "+rating);
-    ratingEncontrado = false;
-    //localStorage.clear();
-    localStorage.removeItem("ratingMeals");
-    arrayRating = arrayRating.filter( el => el.name !== name &&  el.id !== id)
-    localStorage.setItem('ratingMeals', JSON.stringify(arrayRating))
-}
-*/
 
 /*********** FAVORITOS / LIKE ******************/
 //let favorito = false;
@@ -167,6 +153,7 @@ async function getReceta(idReceta) {
         mostrarReceta(receta)
         getAllFavourites(receta);
         getRating(receta);
+        getComments(receta);
         return receta;
         //console.log(receta.meals[0].idMeal);
         //console.log(receta.meals[0].strMeal);
@@ -223,3 +210,78 @@ async function mostrarReceta(infosReceta) {
         div.appendChild(fr); // Mostrar en el DOM*/
     }
 }
+
+
+/************ COMMENTS ****************************/
+
+function mostrarComentarios(comentario) {
+
+    const div = document.querySelector('#comentariosTemplates').content;
+    const listaComentarios = document.querySelector('#listaComentarios');
+
+    const fr = div.cloneNode(true);
+     
+    fr.querySelector("#usernameListaComentario").textContent = `Username: ${comentario.username}`;
+    fr.querySelector("#dateListaComentario").textContent = comentario.date;
+    fr.querySelector("#textoListaComentario").textContent = comentario.comment;
+       
+    listaComentarios.appendChild(fr);    
+}
+
+function getComments(receta) {
+    const storedUserData = localStorage.getItem('commentMeals');
+   
+    if (storedUserData) {
+        arrayComentarios = JSON.parse(storedUserData);
+
+        for (const comentario of arrayComentarios){
+            if(comentario.id === receta.meals[0].idMeal && comentario.mealName === receta.meals[0].strMeal) {
+                mostrarComentarios(comentario);
+            }
+        }
+    }
+}
+
+function guardarComentariosLocalStorage (idReceta, username, comment, date) {
+    arrayComentarios.push({'id': idReceta, 'mealName':  infosReceta.meals[0].strMeal, 'username': username, 'comment' : comment, 'date' : date});
+    localStorage.setItem('commentMeals', JSON.stringify(arrayComentarios))
+}
+
+function limpiarFormulario(usuario, texto) {
+    inputUsername.value = "";
+    textareaComentario.value = "";
+}
+
+function validarFormulario() {
+        
+    const inputUsername = document.querySelector('#inputUsername').value;
+    const textareaComentario = document.querySelector('#textareaComentario').value;
+    const date = new Date();
+    const fecha = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`;
+    
+    if (inputUsername.length > 0 && textareaComentario.length > 0) {
+
+        const div = document.querySelector('#comentariosTemplates').content;
+        const listaComentarios = document.querySelector('#listaComentarios');
+
+        const fr = div.cloneNode(true);
+        
+        fr.querySelector("#usernameListaComentario").textContent = `Username: ${inputUsername}`;
+        fr.querySelector("#dateListaComentario").textContent = fecha;
+        fr.querySelector("#textoListaComentario").textContent = textareaComentario;
+        
+        listaComentarios.appendChild(fr); // Mostrar en el DOM*/
+        guardarComentariosLocalStorage(idReceta, inputUsername, textareaComentario, fecha);
+        
+        const modalComentario = new bootstrap.Modal(document.getElementById('modalComentario'));
+        modalComentario.show();
+        setTimeout(function(){
+            modalComentario.hide()
+        }, 2000);
+        
+        limpiarFormulario(inputUsername, textareaComentario);
+    }
+}
+
+const botonComentario = document.querySelector('#botonComentario');
+botonComentario.addEventListener('click', validarFormulario);
