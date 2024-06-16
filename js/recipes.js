@@ -100,11 +100,16 @@ function mostrarDatos(recetas) {
     /**** FRAGMENT **********/
     const fragment = document.createDocumentFragment();
     
+    /***** ARRAY DE ELEMENTOS SIN IMAGEN PREVIEW *************/
+    const idSinPreview = ['52873', '52900', '52930', '52932'];
     //console.log(recetas)
     for (const receta of recetas.meals) {
         const fr = div.cloneNode(true);
-        
-        fr.querySelector("img").src = receta.strMealThumb; //+"/preview";
+        if(idSinPreview.includes(receta.idMeal)) {
+            fr.querySelector("img").src = receta.strMealThumb;
+        } else {
+            fr.querySelector("img").src = receta.strMealThumb+"/preview";
+        }
         fr.querySelector("img").alt= receta.strMeal;  
         fr.querySelector(".title").textContent = receta.strMeal;
         fr.querySelector("a").href = 'detail.html?s='+receta.idMeal;
