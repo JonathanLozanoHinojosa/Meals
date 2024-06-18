@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 :root {
-    --color-header: #95BF8F;
-    --color-textos: rgb(4, 59, 13);
+    --colorHeader: #95BF8F;
+
+    --primary: 4, 59, 13;
+    --colorTextos: rgb(var(--primary));
+    --color-40:rgba(var(--primary),0.4);
+    
+    --colorTitulo: #557c3e;
+    
+    --colorFondo: #e7e7e7;
+    --colorSpinner: #f3f3f3;
+
     --sombra: 1px 1px 1px #222;
-    --color-dropdown-category: #f9f9f9;
-    --color-fondo: #e7e7e7;
-    --color-texto-titulo: #557c3e;
     --blanco: #fff;
     --negro: #000;
     --negrita: bold;
@@ -18,15 +24,15 @@
 }
 
 html body {
-    background-color: var(--color-fondo);
+    background-color: var(--colorFondo);
 }
 
 body header#header-container .bg-dark{
-    background-color: var(--color-header) !important;
+    background-color: var(--colorHeader) !important;
 }
 
 .navbar-brand h1 { /* Estilo al nombre de la web */
-	color: var(--color-texto-titulo);
+	color: var(--colorTitulo);
 	font-size: 1.5em; /* aumentar tamaño de la fuente */
 	text-transform: uppercase; /* mayúsculas */
 	font-weight: var(--negrita); /* negrita */
@@ -36,20 +42,20 @@ body header#header-container .bg-dark{
 
 a.nav-link {
     font-weight: var(--negrita);
-    color: var(--color-fondo);
+    color: var(--colorFondo);
     text-shadow: var(--sombra); /* sombra en el texto */
     padding: 10px 15px !important;
     text-align: center;
 }
 
 a.nav-link:hover {
-    background-color: var(--color-textos);
-    color: var(--color-fondo);
+    background-color: var(--colorTextos);
+    color: var(--colorFondo);
     text-shadow: var(--sombra); /* sombra en el texto */
 }
 
 a.activo {
-    border-bottom: 2px solid var(--color-textos);
+    border-bottom: 2px solid var(--colorTextos);
 }
 
 #main-container {
@@ -73,19 +79,19 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     opacity: 1;
 }
 #carousel .carousel-control-next-icon, .carousel-control-prev-icon {
-    background-color:var(--color-texto-titulo);
+    background-color:var(--colorTextos);
 }
 
 .carousel-text {
-    background-color: rgba(55, 124, 62, 0.4);
-    border: 1px solid var(--color-textos);
-    color: var(--color-fondo);
+    background-color: var(--color-40);
+    border: 1px solid var(--colorTextos);
+    color: var(--colorFondo);
 	text-shadow: var(--sombra); /* sombra en el texto */
 }
 
 .featurette-divider {
     margin: 1rem 0; /* Space out the Bootstrap <hr> more */
-    color:var(--color-textos)
+    color:var(--colorTextos)
 }
 
 @media (width < 233px) {
@@ -122,21 +128,21 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     }
 }
 
+/*************** Recipes.html **************/
 
-/*************** MASTER **************/
 .category-tile { 
-    position: relative; /* título relativo */
-    overflow: hidden; /* desbordamiento oculto. Si hay algo que sobresale que no se vea */
+    position: relative;
+    overflow: hidden; /* overflow oculto. Si alguna cosa sobresurt. Que no es vegi */
     width: 200px;
     height: 200px;
-    margin: 0 auto 15px; /* arriba 0, derecha e izq centrado auto y abajo 15px */
+    margin: 0 auto 15px; /* a dalt 0, dreta y esquerra centrat auto y a sota 15px */
 }
 
-.category-tile span.title { /* Texto */
-    position: absolute; /* absoluto */
-    bottom: 0; /* posicionado en el 0 inferior */
-    right: 0; /* y 0 derecha */
-    width: 100%; /* y ancho 100% */
+.category-tile span.title {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
     text-align: center;
     background-color: var(--negro);
     color: var(--blanco);
@@ -146,12 +152,13 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
 a.navbar-brand h1 {
     font-size: 1em;
 }
-  
-  /* Efecto cuando se pasa por encima */
+
+/* Efecte quan es passa per sobre, lletra una mica més gran */
 .category-tile:hover {
-    color: var(--color-texto-titulo);
+    font-size: 1.2em;
 }
-  
+
+/* Text número de items */
 h1.numItems {
     font-size: 15px;
     font-weight: var(--negrita);
@@ -165,32 +172,36 @@ h1.numItems {
 #ordenacionItems h1.numItems, #ordenacionItems select#select {
     display: inline-block;
 }
+
 @media (width < 330px) {
     div#ordenacionItems select#select {
         width: 80%;
         display: block;
     }
 }
+
 @media (max-width: 440px) and (min-width: 330px) {
     #select {
         width: 40%;
     }
 }
+
 @media (max-width: 768px) and (min-width: 440px) {
     #select {
         width: 30%;
     }
 }
+
 @media (min-width: 768px) {
     #select {
         width: 20%;
     }
 }
 
-
 section.row{
     margin-top: 20px;
 }
+
 /****************** detail.html ******************/
 
 ul {
@@ -220,14 +231,12 @@ ul {
     height: 400px;
     object-fit: cover;
     object-position: bottom;
-    border: 1px solid var(--color-header);
+    border: 1px solid var(--colorTextos);
 }
 
 #instruction {
     padding-left: 10px;
 }
-
-/******************************************************/
 
 /********************** ESTRELLAS ********************/
 
@@ -279,13 +288,14 @@ ul {
 .fav-pink {
     background-image: url(../images/fav-pink.png);
 }
+
 /********************* SPINNER *******************/
 
 #spinner {
     width: 10rem;
     height: 10rem;
-    border: 5px solid #f3f3f3;
-    border-top: 6px solid var(--color-texto-titulo);
+    border: 5px solid var(--colorSpinner);
+    border-top: 6px solid var(--colorTextos);
     border-radius: 100%;
     margin-top: 15%;
     display: none;
@@ -323,7 +333,7 @@ div#texto {
     }
 }
 
-/********************* DROPDOWN *************/
+/********************* DROPDOWN CATEGORY *************/
 .dropdown {
     position: relative;
     display: inline-block;
@@ -332,10 +342,14 @@ div#texto {
 .dropdownContent {
     display: none;
     position: absolute;
-    background-color: var(--color-dropdown-category);
+    background-color: var(--colorFondo);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+}
+
+.dropdownContent :hover {
+    background-color: var(--colorHeader);
 }
 
 .dropdownContent label {
@@ -349,16 +363,15 @@ div#texto {
 }
 
 input#a {
-    accent-color: var(--color-texto-titulo);
+    accent-color: var(--colorHeader);
 }
 
+/* botó apply filter dins Categories */
 #botonFilterCategory {
     width: 100%;
-    background-color: var(--color-texto-titulo);
-    color: white;
 }
 
-/*** COMENTARIOS***/
+/************** COMENTARIS ***************/
 form div, form button#botonComentario {
     margin: 10px;
 }
@@ -380,7 +393,7 @@ input#inputUsername, form div textarea{
 }
 
 #textareaComentario , #inputUsername {
-    border-color: var(--color-texto-titulo);
+    border-color: var(--colorTextos);
     border-radius: 0%;
 }
 #usernameListaComentario {
@@ -391,27 +404,27 @@ input#inputUsername, form div textarea{
     width: 25px;
 }
 
-/******** BOTONES ************/
+/******** BOTONS AMB CLASE PERSONALIZADOS ************/
 button.personalizados {
-    color: var(--color-textos) !important;
-    border-color: var(--color-textos) !important;
+    color: var(--colorTextos) !important;
+    border-color: var(--colorTextos) !important;
 }
 
 button.personalizados:hover {
-    background-color: var(--color-textos) !important;
+    background-color: var(--colorTextos) !important;
     border-color: var(--blanco) !important;
     color: var(--blanco) !important;
 }
 
 hr {
-    color: var(--color-textos) !important;
+    color: var(--colorTextos) !important;
 }
 
 h2 {
     font-weight: var(--negrita);
     font-size: 120em;
     padding: 20px 0;
-    border-bottom: 1px solid var(--color-textos);
+    border-bottom: 1px solid var(--colorTextos);
 }
 
 .star-container, .fav-container, .comentarios-formulario, #tituloComentario {
