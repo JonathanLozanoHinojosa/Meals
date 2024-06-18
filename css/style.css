@@ -392,12 +392,12 @@ input#inputUsername, form div textarea{
 }
 
 /******** BOTONES ************/
-button {
+button.personalizados {
     color: var(--color-textos) !important;
     border-color: var(--color-textos) !important;
 }
 
-button:hover {
+button.personalizados:hover {
     background-color: var(--color-textos) !important;
     border-color: var(--blanco) !important;
     color: var(--blanco) !important;
