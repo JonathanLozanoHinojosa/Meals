@@ -169,6 +169,10 @@ h1.numItems {
     height:100%;
 }
 
+a#linkDetail {
+    display: inline-block;
+}
+
 #ordenacionItems h1.numItems, #ordenacionItems select#select {
     display: inline-block;
 }
