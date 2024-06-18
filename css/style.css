@@ -413,3 +413,7 @@ h2 {
     padding: 20px 0;
     border-bottom: 1px solid var(--color-textos);
 }
+
+.star-container, .fav-container, .comentarios-formulario, #tituloComentario {
+    visibility: hidden;
+}
