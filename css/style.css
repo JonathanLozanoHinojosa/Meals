@@ -288,7 +288,7 @@ ul {
     border-top: 6px solid var(--color-texto-titulo);
     border-radius: 100%;
     margin-top: 15%;
-    visibility: hidden;
+    display: none;
     animation: spin 1s infinite ease-in-out;
 }
 
