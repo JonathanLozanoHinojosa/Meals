@@ -1,5 +1,6 @@
 const div = document.querySelector('#contenidodetalle');
 const stars = document.querySelectorAll("div.star-container div.star");
+const spinner = document.querySelector("#spinner");
 const fav = document.querySelector("div.fav-container div.fav");
 
 let params = new URLSearchParams(document.location.search);
@@ -25,6 +26,15 @@ let arrayComentarios = [];
 addEventsToStars();
 const infosReceta = await getReceta(idReceta);
 
+
+/************************** SPINNER **************************/
+function showSpinner() {
+    spinner.classList.add("display");
+}
+
+function hideSpinner() {
+    spinner.classList.remove("display");
+}
 
 /*************** RATING **********************************/
 
@@ -143,6 +153,7 @@ function deleteFavourite(id, name) {
 /************************** OBTENCIÓ DE RECEPTA SELECCIONADA API **************************/
 async function getReceta(idReceta) {
     try {
+        showSpinner();
         // Accedeix a la API i recupera dades
         const apiUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="+idReceta;
         const response = await fetch(apiUrl); 
@@ -154,6 +165,7 @@ async function getReceta(idReceta) {
         getAllFavourites(receta);
         getRating(receta);
         getComments(receta);
+        hideSpinner();
         return receta;
         //console.log(receta.meals[0].idMeal);
         //console.log(receta.meals[0].strMeal);
