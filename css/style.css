@@ -1,44 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+:root {
+    --color-header: #95BF8F;
+    --color-textos: rgb(4, 59, 13);
+    --sombra: 1px 1px 1px #222;
+    --color-dropdown-category: #f9f9f9;
+    --color-fondo: #e7e7e7;
+    --color-texto-titulo: #557c3e;
+    --blanco: #fff;
+    --negro: #000;
+    --negrita: bold;
+}
 * {
     box-sizing: border-box;
     padding:0;
-    margin:0;font-family: 'Cactus Classical Serif', sans-serif; /* copiado de google fonts */
+    margin:0;
+    font-family: 'Cactus Classical Serif', sans-serif;
 }
 
 html body {
-    background-color: #e7e7e7;
+    background-color: var(--color-fondo);
 }
 
 body header#header-container .bg-dark{
-    background-color: #95BF8F !important;
+    background-color: var(--color-header) !important;
 }
 
-.navbar-brand h1 { /* Estilo al nombre del restaurante */
-	color: #557c3e;
+.navbar-brand h1 { /* Estilo al nombre de la web */
+	color: var(--color-texto-titulo);
 	font-size: 1.5em; /* aumentar tamaño de la fuente */
 	text-transform: uppercase; /* mayúsculas */
-	font-weight: bold; /* negrita */
-	text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+	font-weight: var(--negrita); /* negrita */
+	text-shadow: var(--sombra); /* sombra en el texto */
     margin:5px 0 0 10px;
 }
 
 a.nav-link {
-    font-weight: bold;
-    color: #e7e7e7;
-    text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+    font-weight: var(--negrita);
+    color: var(--color-fondo);
+    text-shadow: var(--sombra); /* sombra en el texto */
     padding: 10px 15px !important;
     text-align: center;
 }
 
 a.nav-link:hover {
-    background-color: rgb(4, 59, 13);
-    color: #e7e7e7;
-    text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+    background-color: var(--color-textos);
+    color: var(--color-fondo);
+    text-shadow: var(--sombra); /* sombra en el texto */
 }
 
 a.activo {
-    border-bottom: 2px solid rgb(4, 59, 13);
+    border-bottom: 2px solid var(--color-textos);
 }
 
 #main-container {
@@ -62,19 +73,19 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     opacity: 1;
 }
 #carousel .carousel-control-next-icon, .carousel-control-prev-icon {
-    background-color:#557c3e;
+    background-color:var(--color-texto-titulo);
 }
 
 .carousel-text {
     background-color: rgba(55, 124, 62, 0.4);
-    border: 1px solid rgb(4, 59, 13);
-    color: #e7e7e7;
-	text-shadow: 1px 1px 1px #222; /* sombra en el texto */
+    border: 1px solid var(--color-textos);
+    color: var(--color-fondo);
+	text-shadow: var(--sombra); /* sombra en el texto */
 }
 
 .featurette-divider {
     margin: 1rem 0; /* Space out the Bootstrap <hr> more */
-    color:rgb(4, 59, 13)
+    color:var(--color-textos)
 }
 
 @media (width < 233px) {
@@ -111,16 +122,6 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     }
 }
 
-/*
-.dropdown-cols-2 .dropdown-menu {
-    min-width: 800px;
-}
-
-.dropdown-cols-2 .dropdown-menu > div {
-    float: left;      
-    padding: 10px 20px;  
-}
-*/
 
 /*************** MASTER **************/
 .category-tile { 
@@ -137,8 +138,8 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     right: 0; /* y 0 derecha */
     width: 100%; /* y ancho 100% */
     text-align: center;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--negro);
+    color: var(--blanco);
     opacity: .7;
 }
 
@@ -148,12 +149,12 @@ a.navbar-brand h1 {
   
   /* Efecto cuando se pasa por encima */
 .category-tile:hover {
-    color: green;
+    color: var(--color-texto-titulo);
 }
   
 h1.numItems {
     font-size: 15px;
-    font-weight: bold;
+    font-weight: var(--negrita);
 }
 
 .category-tile img {
@@ -192,10 +193,6 @@ section.row{
 }
 /****************** detail.html ******************/
 
-.detail {
-    text-align: center;
-}
-
 ul {
     list-style-position: inside;
 }
@@ -204,15 +201,30 @@ ul {
     font-size: 0.7em;
 }
 
-#flag {
+#flag, #name {
     margin-top: 20px;
+    display:inline-block;
+}
+
+#flag {
+    height: 48px;
+    object-fit: cover;
+    object-position: bottom;
+    padding-right: 10px;
+}
+#nombreBandera {
+    display:flex;
 }
 
 #image {
     height: 400px;
     object-fit: cover;
     object-position: bottom;
-    border: 5px solid #95BF8F;
+    border: 1px solid var(--color-header);
+}
+
+#instruction {
+    padding-left: 10px;
 }
 
 /******************************************************/
@@ -273,7 +285,7 @@ ul {
     width: 10rem;
     height: 10rem;
     border: 5px solid #f3f3f3;
-    border-top: 6px solid #557c3e;
+    border-top: 6px solid var(--color-texto-titulo);
     border-radius: 100%;
     margin-top: 15%;
     visibility: hidden;
@@ -320,7 +332,7 @@ div#texto {
 .dropdownContent {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--color-dropdown-category);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -337,20 +349,67 @@ div#texto {
 }
 
 input#a {
-    accent-color: #557c3e;
+    accent-color: var(--color-texto-titulo);
 }
 
 #botonFilterCategory {
     width: 100%;
-    background-color: rgb(4, 59, 13);
+    background-color: var(--color-texto-titulo);
     color: white;
 }
 
-/*** FORMULARIO ***/
+/*** COMENTARIOS***/
 form div, form button#botonComentario {
     margin: 10px;
 }
 
-input#username, form div textarea{
+input#inputUsername, form div textarea{
     width: 50%;
+}
+
+#usernameListaComentario, #dateListaComentario {
+    display:inline-block;
+}
+
+#dateListaComentario{
+    font-size: 90%;
+}
+
+.comentarios-formulario{
+    padding-bottom: 20px;
+}
+
+#textareaComentario , #inputUsername {
+    border-color: var(--color-texto-titulo);
+    border-radius: 0%;
+}
+#usernameListaComentario {
+    font-weight: var(--negrita);
+}
+
+#userImage {
+    width: 25px;
+}
+
+/******** BOTONES ************/
+button {
+    color: var(--color-textos) !important;
+    border-color: var(--color-textos) !important;
+}
+
+button:hover {
+    background-color: var(--color-textos) !important;
+    border-color: var(--blanco) !important;
+    color: var(--blanco) !important;
+}
+
+hr {
+    color: var(--color-textos) !important;
+}
+
+h2 {
+    font-weight: var(--negrita);
+    font-size: 120em;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-textos);
 }
