@@ -1,4 +1,4 @@
-const div = document.querySelector('#main-content');
+const div = document.querySelector('#contenidodetalle');
 const stars = document.querySelectorAll("div.star-container div.star");
 const fav = document.querySelector("div.fav-container div.fav");
 
@@ -201,7 +201,7 @@ async function mostrarReceta(infosReceta) {
             
             if ((informacion[ingrediente] !== null && informacion[ingrediente] !== '') && (informacion[medida] !== null && informacion[medida] !== '')) {
                 //console.log(informacion[medida] + '-' +informacion[ingrediente]);
-                fr.querySelector("#"+CSS.escape(i)).textContent = informacion[medida] + ' - ' +informacion[ingrediente];     
+                fr.querySelector("#"+CSS.escape(i)).textContent = informacion[medida] + ' ' +informacion[ingrediente];     
             } else {
                 fr.querySelector("#"+CSS.escape(i)).style.display = 'none';
             }
@@ -221,7 +221,8 @@ function mostrarComentarios(comentario) {
 
     const fr = div.cloneNode(true);
      
-    fr.querySelector("#usernameListaComentario").textContent = `Username: ${comentario.username}`;
+    fr.querySelector("#userImage").alt = comentario.username;
+    fr.querySelector("#usernameListaComentario").textContent = comentario.username;
     fr.querySelector("#dateListaComentario").textContent = comentario.date;
     fr.querySelector("#textoListaComentario").textContent = comentario.comment;
        
@@ -271,7 +272,7 @@ function validarFormulario() {
 
         const fr = div.cloneNode(true);
         
-        fr.querySelector("#usernameListaComentario").textContent = `Username: ${inputUsername}`;
+        fr.querySelector("#usernameListaComentario").textContent = inputUsername;
         fr.querySelector("#dateListaComentario").textContent = fecha;
         fr.querySelector("#textoListaComentario").textContent = textareaComentario;
         
