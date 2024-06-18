@@ -193,7 +193,11 @@ async function getFlag(gentilicio) {
 async function mostrarReceta(infosReceta) {
     
     const template = document.querySelector('#informacion').content;
-    
+    document.querySelector('.star-container').style.visibility = 'visible';
+    document.querySelector('.fav-container').style.visibility = 'visible';
+    document.querySelector('.comentarios-formulario').style.visibility = 'visible';
+    document.querySelector('#tituloComentario').style.visibility = 'visible';
+
     for (const informacion of infosReceta.meals) {
         //console.log(informacion)
         const fr = template.cloneNode(true);
