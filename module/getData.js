@@ -1,3 +1,68 @@
+const spinner = document.querySelector("#spinner");
+
+/*************** RECIPES.JS FUNCTIONS ***************/
+
+// Get all categories from the API
+export async function getCategories(categorias) {
+    try {
+        // Accedeix a la API i recupera dades
+        const apiUrl = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
+        const response = await fetch(apiUrl); 
+        const categories = await response.json();
+        
+        for (const category of categories.meals) {
+            categorias.push(category.strCategory);
+        }
+        return categorias;
+
+    } catch(error){
+        console.log("Error fetching data ", error);
+    }
+}
+
+/*************** RECIPES.JS AND FAVOURITES.JS SHARED FUNCTIONS ***************/
+
+// Get all recipes from the API
+export async function getAllData() {
+    try {
+        showSpinner();
+
+        // Accedeix a la API i recupera dades
+        const apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?f=%";
+        const response = await fetch(apiUrl); 
+        const recetas = await response.json();
+
+        let recetasBackup = [...recetas.meals];
+
+        hideSpinner();
+
+        return recetas;
+    } catch(error){
+        console.log("Error fetching data ", error);
+    }
+}
+
+
+/*************** DETAIL.JS FILE ***************/
+
+// Get the recipe with the id received from the API
+export async function getReceta(idReceta) {
+    try {
+        showSpinner();
+        // Accedeix a la API i recupera dades
+        const apiUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="+idReceta;
+        const response = await fetch(apiUrl); 
+        const receta = await response.json();
+    
+        hideSpinner();
+        return receta;
+
+    } catch(error){
+        console.log("Error fetching data ", error);
+    }
+}
+
+// Get the flag of the recipe country selected
 export async function getFlag(gentilicio) {
     const response = await fetch("./module/countries.json");
     const flags = await response.json();
@@ -6,79 +71,15 @@ export async function getFlag(gentilicio) {
             return flag.flag;
         }
     }
-   // console.log(flags.flags);
 }
 
+/*************** COMMON IN ALL JS FILES (SPINNER) ***************/
 
-
-
-
-export async function getCategories() {
-    try {
-        // Accedeix a la API i recupera dades
-        const apiUrl = "https://www.themealdb.com/api/json/v1/1/list.php?c=list";
-        const response = await fetch(apiUrl); 
-        const categories = await response.json();
-    
-        //console.log(data.meals[0].strCategory)
-        return categories;
-        /*for (const category of categories.meals) {
-            console.log(category.strCategory)
-        }*/
-        //container.textContent = JSON.stringify(data);
-    } catch(error){
-        console.log("Error fetching data ", error);
-    }
+// Show and hide the spinner
+function showSpinner() {
+    spinner.classList.add("display");
 }
 
-
-export async function getCountries() {
-    try {
-        // Accedeix a la API i recupera dades
-        const apiUrl = "https://www.themealdb.com/api/json/v1/1/list.php?a=list";
-        const response = await fetch(apiUrl); 
-        const countries = await response.json();
-    
-        //console.log(data)
-        return countries;
-        /*for (const country of countries.meals) {
-            console.log(country.strArea)
-        }*/
-        //container.textContent = JSON.stringify(data);
-    } catch(error){
-        console.log("Error fetching data ", error);
-    }
-}
-
-export async function getIngredients() {
-    try {
-        // Accedeix a la API i recupera dades
-        const apiUrl = "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
-        const response = await fetch(apiUrl); 
-        const ingredients = await response.json();
-    
-        return ingredients;
-        //console.log(data)
-        /*for (const ingredient of ingredients.meals) {
-            console.log(ingredient.strIngredient)
-        }*/
-        //container.textContent = JSON.stringify(data);
-    } catch(error){
-        console.log("Error fetching data ", error);
-    }
-}
-
-
-export async function getReceta(nombreReceta) {
-    try {
-        // Accedeix a la API i recupera dades
-        const apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s="+nombreReceta;
-        const response = await fetch(apiUrl); 
-        const receta = await response.json();
-    
-        return receta;
-
-    } catch(error){
-        console.log("Error fetching data ", error);
-    }
+function hideSpinner() {
+    spinner.classList.remove("display");
 }
