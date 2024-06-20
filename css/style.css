@@ -269,20 +269,25 @@ ul {
 
 /********************* LIKE **********************/
 
+#textoFavorito {
+    display: inline-block;
+}
+
 .fav-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin-left: 40px;
+    display: inline-block;
+    _flex-direction: row;
+    _gap: 10px;
+    _margin-left: 40px;
 }
 
 .fav {
+    display:inline-block;
     width: 20px;
     height: 20px;
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
-    margin-bottom: 20px; /* REMOVE */
+    _margin-bottom: 20px; /* REMOVE */
 }
   
 .fav-gray {
@@ -431,6 +436,6 @@ h2 {
     border-bottom: 1px solid var(--colorTextos);
 }
 
-.star-container, .fav-container, .comentarios-formulario, #tituloComentario {
+.star-container, .fav-container, .comentarios-formulario, #tituloComentario, #divFavorito, #divRating {
     visibility: hidden;
 }
