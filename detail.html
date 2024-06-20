@@ -62,18 +62,6 @@
     </div>
 
     <div id='main-content' class='container detail'>
-
-        <div class="star-container">
-            <div class="star star-gray"></div>
-            <div class="star star-gray"></div>
-            <div class="star star-gray"></div>
-            <div class="star star-gray"></div>
-            <div class="star star-gray"></div>
-        </div>
-    
-        <div class="fav-container">
-            <div class="fav fav-gray"></div>
-        </div>
     
         <!-- Modals Bootstrap -->
         <div class="modal fade" id="modalComentario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -93,6 +81,27 @@
            
         </div>
 
+        <div id="divFavorito">
+            <h2> Favourites</h2>
+
+            <p id="textoFavorito">Add this recipe to favourites and access it quickly:</p>
+            <div class="fav-container">
+                <div class="fav fav-gray"></div>
+            </div>
+        </div>
+
+        <div id="divRating">
+            <h2>Rating</h2>
+            
+            <p>Help us by rating this recipe: </p>
+            <div class="star-container">
+                <div class="star star-gray"></div>
+                <div class="star star-gray"></div>
+                <div class="star star-gray"></div>
+                <div class="star star-gray"></div>
+                <div class="star star-gray"></div>
+            </div>
+        </div>
 
         <h2 id="tituloComentario">Comments</h2>
 
@@ -109,61 +118,14 @@
             </form>
             
         </div>
-    
+
         <div id="listaComentarios">
            
         </div>
        
     </div>
 
-    <!--
-    <div class="star-container">
-        <div class="star star-gray"></div>
-        <div class="star star-gray"></div>
-        <div class="star star-gray"></div>
-        <div class="star star-gray"></div>
-        <div class="star star-gray"></div>
-    </div>
-
-    <div class="fav-container">
-        <div class="fav fav-gray"></div>
-    </div>
-
-     Modals Bootstrap 
-    <div class="modal fade" id="modalComentario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Comments</h5>
-                </div>
-                <div class="modal-body">
-                    Your comment has been added succesfully.
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <h2>Comments</h2>
-
-    <div class="comentarios-formulario">
-
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" id="inputUsername" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <textarea rows='5' id="textareaComentario" required></textarea>
-            </div>
-            <button type="button" data-toggle="modal" data-target="#exampleModalCenter" id="botonComentario" class="btn btn-success">Add comment</button>
-        </form>
-        
-    </div>
-
-    <div id="listaComentarios">
-       
-    </div>-->
-
+    
     <noscript>
         <strong> Please, enable Javascript on the browser.</strong>
     </noscript>
