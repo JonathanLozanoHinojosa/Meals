@@ -307,7 +307,7 @@ ul {
 }
 
 #spinner.display {
-    visibility: visible;
+    display:inline-block;
 }
 
 @keyframes spin {
