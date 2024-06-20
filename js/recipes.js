@@ -187,8 +187,8 @@ botonCategoriaFiltro.addEventListener('click', function() {
 });
 
 function filtroCategoria(recetas) {
-    console.log(categoriasSeleccionadas.includes(recetas.strCategory));
-    console.log(recetas.strCategory);
+    //console.log(categoriasSeleccionadas.includes(recetas.strCategory));
+    //console.log(recetas.strCategory);
     if (categoriasSeleccionadas.length === 0) {
         return recetas;
     } else {
