@@ -1,40 +1,37 @@
+import { getFlag } from "../module/getData.js";
+import { getReceta } from "../module/getData.js";
+
+// Objectes del DOM
 const div = document.querySelector('#contenidodetalle');
 const stars = document.querySelectorAll("div.star-container div.star");
-const spinner = document.querySelector("#spinner");
 const fav = document.querySelector("div.fav-container div.fav");
 
+// Recuperació de paàmetres pasats per URL
 let params = new URLSearchParams(document.location.search);
 let idReceta = params.get("s");
-
-let bandera = '';
 
 // Favoritos
 let arrayFavoritos = [];
 let favoritoEncontrado = false;
 
-// Ratings
+// Rating
 let arrayRating = [];
 let ratingEncontrado = false;
 let rating = 0;
 
-// Comentarios
+// Comentaris
 let arrayComentarios = [];
 
-//console.log(typeof(idReceta))
-//idReceta = idReceta.replaceAll(' ', '%20');
 
+// Carrega inicial de l'aplicació
 addEventsToStars();
 const infosReceta = await getReceta(idReceta);
+let bandera = await getFlag(infosReceta.meals[0].strArea)
+mostrarReceta(infosReceta)
+getAllFavourites(infosReceta);
+getRating(infosReceta);
+getComments(infosReceta);
 
-
-/************************** SPINNER **************************/
-function showSpinner() {
-    spinner.classList.add("display");
-}
-
-function hideSpinner() {
-    spinner.classList.remove("display");
-}
 
 /*************** RATING **********************************/
 
@@ -44,13 +41,12 @@ function actualizaRating(event) {
             rating = index + 1;
         }
     }
-
     resetStars();
     addCssStars();
 }
 
+// Reset del CSS a totes les estrelles i afegir al localstorage
 function resetStars() {
-     // RESET DEL CSS EN TODAS LAS ESTRELLAS
      for (const star of stars){
         star.classList.remove("star-pink");
     }
@@ -60,20 +56,22 @@ function resetStars() {
     localStorage.setItem('ratingMeals', JSON.stringify(arrayRating));
 }
 
+// Afegeix el CSS a les estrelles que toca
 function addCssStars() {
-    // AÑADE EL CSS A LAS ESTRELLAS QUE TOCA
     paintStars();
     ratingEncontrado = true;
     arrayRating.push({'id': infosReceta.meals[0].idMeal, 'name': infosReceta.meals[0].strMeal, 'rating': rating});
     localStorage.setItem('ratingMeals', JSON.stringify(arrayRating));
 }
 
+// Event estrelles
 function addEventsToStars() {
     for (const star of stars){
-        star.addEventListener('click', actualizaRating)
+        star.addEventListener('click', actualizaRating);
     }
 }
 
+// Afegir la clase fins a l'estrella seleccionada
 function paintStars() {
    for (const [index, star] of stars.entries()){
         if (index < rating) {
@@ -82,6 +80,7 @@ function paintStars() {
     }
 }
 
+// Cercar al localstorage si la recepta té estrelletes i si té crida a paintStars
 function getRating(receta){
     const storedUserData = localStorage.getItem('ratingMeals');
    
@@ -102,8 +101,8 @@ function getRating(receta){
 
 
 /*********** FAVORITOS / LIKE ******************/
-//let favorito = false;
 
+// Event quan es polsa el cor de favoritos
 fav.addEventListener("click", function(e) {
     const id = infosReceta.meals[0].idMeal;
     const name = infosReceta.meals[0].strMeal;
@@ -116,7 +115,7 @@ fav.addEventListener("click", function(e) {
     }
 });
 
-
+// De totes les receptes de la API mostrem nomès les que son favorites
 function getAllFavourites(receta){
     const storedUserData = localStorage.getItem('favouriteMeals');
    
@@ -135,12 +134,14 @@ function getAllFavourites(receta){
     }     
 }
 
+// Afegir favoritos al localstorage
 function addFavourite(id, name) {    
     favoritoEncontrado = true;
     arrayFavoritos.push({'id': id, 'name': name});
     localStorage.setItem('favouriteMeals', JSON.stringify(arrayFavoritos))
 }
 
+// Eliminar favoritos al localstorage
 function deleteFavourite(id, name) {
     favoritoEncontrado = false;
     //localStorage.clear();
@@ -150,46 +151,9 @@ function deleteFavourite(id, name) {
 }
 
 
-/************************** OBTENCIÓ DE RECEPTA SELECCIONADA API **************************/
-async function getReceta(idReceta) {
-    try {
-        showSpinner();
-        // Accedeix a la API i recupera dades
-        const apiUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="+idReceta;
-        const response = await fetch(apiUrl); 
-        const receta = await response.json();
-    
-        //return receta;
-        bandera = await getFlag(receta.meals[0].strArea)
-        mostrarReceta(receta)
-        getAllFavourites(receta);
-        getRating(receta);
-        getComments(receta);
-        hideSpinner();
-        return receta;
-        //console.log(receta.meals[0].idMeal);
-        //console.log(receta.meals[0].strMeal);
-
-    } catch(error){
-        console.log("Error fetching data ", error);
-    }
-}
-
-
-/************************** OBTENCIÓ DE FLAGS JSON **************************/
-async function getFlag(gentilicio) {
-    const response = await fetch("./module/countries.json");
-    const flags = await response.json();
-    for(const flag of flags.flags) {
-        if(flag.code === gentilicio) {
-            return flag.flag;
-        }
-    }
-}
-
-
-
 /************************** MOSTRAR LES DADES **************************/
+
+// Ficar dades de la API al DOM
 async function mostrarReceta(infosReceta) {
     
     const template = document.querySelector('#informacion').content;
@@ -230,6 +194,10 @@ async function mostrarReceta(infosReceta) {
 
 /************ COMMENTS ****************************/
 
+const botonComentario = document.querySelector('#botonComentario');
+botonComentario.addEventListener('click', validarFormulario);
+
+// Afegir comentaris al DOM
 function mostrarComentarios(comentario) {
 
     const div = document.querySelector('#comentariosTemplates').content;
@@ -245,6 +213,7 @@ function mostrarComentarios(comentario) {
     listaComentarios.appendChild(fr);    
 }
 
+// Cercar si al localstorage la recepta té comentaris
 function getComments(receta) {
     const storedUserData = localStorage.getItem('commentMeals');
    
@@ -259,18 +228,20 @@ function getComments(receta) {
     }
 }
 
+// Ficar els comentaris al localstorage
 function guardarComentariosLocalStorage (idReceta, username, comment, date) {
     arrayComentarios.push({'id': idReceta, 'mealName':  infosReceta.meals[0].strMeal, 'username': username, 'comment' : comment, 'date' : date});
     localStorage.setItem('commentMeals', JSON.stringify(arrayComentarios))
 }
 
+// Refresh dels comentaris
 function limpiarFormulario(usuario, texto) {
     inputUsername.value = "";
     textareaComentario.value = "";
 }
 
+// Gestió de rebre dades del formulari
 function validarFormulario() {
-        
     const inputUsername = document.querySelector('#inputUsername').value;
     const textareaComentario = document.querySelector('#textareaComentario').value;
     const date = new Date();
@@ -304,6 +275,3 @@ function validarFormulario() {
         limpiarFormulario(inputUsername, textareaComentario);
     }
 }
-
-const botonComentario = document.querySelector('#botonComentario');
-botonComentario.addEventListener('click', validarFormulario);
