@@ -161,6 +161,8 @@ async function mostrarReceta(infosReceta) {
     document.querySelector('.fav-container').style.visibility = 'visible';
     document.querySelector('.comentarios-formulario').style.visibility = 'visible';
     document.querySelector('#tituloComentario').style.visibility = 'visible';
+    document.querySelector('#divRating').style.visibility = 'visible';
+    document.querySelector('#divFavorito').style.visibility = 'visible';
 
     for (const informacion of infosReceta.meals) {
         //console.log(informacion)
