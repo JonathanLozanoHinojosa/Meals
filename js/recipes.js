@@ -38,25 +38,14 @@ select.addEventListener('change', function (e) {
     
     if(select.value === '1') {
         recetasBackup.meals.sort((a, b) => {
-            if ((a.strMeal.trimStart()) < (b.strMeal.trimStart())) {
-              return -1;
-            } else if ((a.strMeal.trimStart()) > (b.strMeal.trimStart())) {
-              return 1;
-            }
-            return 0;
+            return (a.strMeal.trimStart().localeCompare(b.strMeal.trimStart()));
           });
-          mostrarDatos(recetasBackup)
     } else {
         recetasBackup.meals.sort((a, b) => {
-            if ((a.strMeal.trimStart()) < (b.strMeal.trimStart())) {
-              return 1;
-            } else if ((a.strMeal.trimStart()) > (b.strMeal.trimStart())) {
-              return -1;
-            }
-            return 0;
+            return (b.strMeal.trimStart().localeCompare(a.strMeal.trimStart()));
           });
-          mostrarDatos(recetasBackup)
-    } 
+    }
+    mostrarDatos(recetasBackup);
 });
 
 /************************** OBTENCIÓ DE RECEPTES API **************************/
