@@ -406,7 +406,7 @@ input#inputUsername, form div textarea{
     border-radius: 0%;
 }
 
-#textareaComentario:invalid , #inputUsername:invalid, .noCumplimentado {
+.noCumplimentado {
     box-shadow: 0 0 5px 1px red;
 }
 
