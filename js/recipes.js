@@ -13,7 +13,6 @@ const recetas = await getAllData();
 
 let recetasBackup = {};
 recetasBackup = [...recetas.meals];
-console.log(recetasBackup)
 
 let categorias = [];
 categorias = await getCategories(categorias);
