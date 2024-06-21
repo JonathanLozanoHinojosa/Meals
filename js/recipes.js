@@ -32,11 +32,11 @@ const select = document.getElementById('select');
 select.addEventListener('change', function (e) {
     
     if(select.value === '1') {
-        recetasBackup.meals.sort((a, b) => {
+        recetasBackup.sort((a, b) => {
             return (a.strMeal.trimStart().localeCompare(b.strMeal.trimStart()));
           });
     } else {
-        recetasBackup.meals.sort((a, b) => {
+        recetasBackup.sort((a, b) => {
             return (b.strMeal.trimStart().localeCompare(a.strMeal.trimStart()));
           });
     }
