@@ -405,6 +405,11 @@ input#inputUsername, form div textarea{
     border-color: var(--colorTextos);
     border-radius: 0%;
 }
+
+#textareaComentario:invalid , #inputUsername:invalid, .noCumplimentado {
+    box-shadow: 0 0 5px 1px red;
+}
+
 #usernameListaComentario {
     font-weight: var(--negrita);
 }
