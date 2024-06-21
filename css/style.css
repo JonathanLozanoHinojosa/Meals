@@ -371,7 +371,7 @@ div#texto {
     display: block;
 }
 
-input#a {
+input.a {
     accent-color: var(--colorHeader);
 }
 
