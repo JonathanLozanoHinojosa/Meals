@@ -9,29 +9,22 @@ const botonCategoriaFiltro = document.querySelector("#botonFilterCategory");
 // Carrega inicial de l'aplicació
 let categoriasSeleccionadas = [];
 const recetas = await getAllData();
-
 //let recetasBackup = recetas;
+
 let recetasBackup = {};
-recetasBackup["meals"] = [...recetas.meals];
+recetasBackup = [...recetas.meals];
+console.log(recetasBackup)
 
 let categorias = [];
 categorias = await getCategories(categorias);
-mostrarDatos(recetas);
+mostrarDatos(recetasBackup);
 addCategoriesDropdown(categorias);
 
 
 /************************** CERCA PER NOM **************************/
-function funcionFiltro(recetas) {
-    const palabra = document.querySelector("#palabraABuscar").value;
-    return recetas.strMeal.toLowerCase().includes(palabra.toLowerCase());
-}
 
 busqueda.addEventListener('click', function (e) {
-    let recetasFilter = recetas.meals.filter(funcionFiltro);
-    let recetasObjeto = {};
-    recetasObjeto["meals"] = recetasFilter;
-    
-    mostrarDatos(recetasObjeto)
+    mostrarDatos(recetasBackup.filter(funcionFiltro));
 });
 
 /************************** ORDENACIÓ A-Z/Z-A **************************/
@@ -53,13 +46,13 @@ select.addEventListener('change', function (e) {
 });
 
 /************************** MOSTRAR QUANTITAT DE RECEPTES  **************************/
-function mostrarNumeroRecetas(recetas) {
-    document.querySelector('.numItems').textContent = `Meals: ${recetas.meals.length} items`;
+function mostrarNumeroRecetas(recetasBackup) {
+    document.querySelector('.numItems').textContent = `Meals: ${recetasBackup.length} items`;
 }
 
 
 /************************** MOSTRAR DADES DOM **************************/
-function mostrarDatos(recetas) {
+function mostrarDatos(recetasBackup) {
     
     clearDiv();
     const div = document.querySelector('#recetas').content;
@@ -70,7 +63,7 @@ function mostrarDatos(recetas) {
     // Array ambs id's de les receptes sense imatge preview
     const idSinPreview = ['52873', '52900', '52930', '52932'];
     
-    for (const receta of recetas.meals) {
+    for (const receta of recetasBackup) {
         const fr = div.cloneNode(true);
         
         idSinPreview.includes(receta.idMeal) ? fr.querySelector("img").src = receta.strMealThumb : fr.querySelector("img").src = receta.strMealThumb+"/preview";   
@@ -85,7 +78,7 @@ function mostrarDatos(recetas) {
 
     // Afegim el fragment al contenidor
     section.appendChild(fragment);
-    mostrarNumeroRecetas(recetas);
+    mostrarNumeroRecetas(recetasBackup);
 }
 
 /************************** REFRESH DEL CONTENIDOR DE DADES  **************************/
@@ -130,17 +123,19 @@ contenedorDropdown.addEventListener('click', function(event) {
 
 // Event al fer click al botó de categories
 botonCategoriaFiltro.addEventListener('click', function() {
-    let recetasFilter = recetas.meals.filter(filtroCategoria);
-    let recetasObjeto = {};
-    recetasObjeto["meals"] = recetasFilter;
-    mostrarDatos(recetasObjeto)
+    mostrarDatos(recetasBackup.filter(funcionFiltro));
 });
 
-// Filtre per mostrar nomès les receptes seleccionades
-function filtroCategoria(recetas) {
-    if (categoriasSeleccionadas.length === 0) {
-        return recetas;
+// Filtre per mostrar nomès les receptes seleccionades per nom i categoria
+function funcionFiltro(recetasBackup) {
+    const palabra = document.querySelector("#palabraABuscar").value;
+    if (categoriasSeleccionadas.length === 0 && !palabra) {
+        return recetasBackup;
+    } else if (categoriasSeleccionadas.length !== 0 && !palabra) {
+        return categoriasSeleccionadas.includes(recetasBackup.strCategory);
+    } else if (categoriasSeleccionadas.length === 0 && palabra) {
+        return recetasBackup.strMeal.toLowerCase().includes(palabra.toLowerCase());
     } else {
-        return categoriasSeleccionadas.includes(recetas.strCategory);
+        return recetasBackup.strMeal.toLowerCase().includes(palabra.toLowerCase()) && categoriasSeleccionadas.includes(recetasBackup.strCategory);
     }
 }
