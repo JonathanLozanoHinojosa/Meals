@@ -9,7 +9,11 @@ const botonCategoriaFiltro = document.querySelector("#botonFilterCategory");
 // Carrega inicial de l'aplicació
 let categoriasSeleccionadas = [];
 const recetas = await getAllData();
-let recetasBackup = recetas;
+
+//let recetasBackup = recetas;
+let recetasBackup = {};
+recetasBackup["meals"] = [...recetas.meals];
+
 let categorias = [];
 categorias = await getCategories(categorias);
 mostrarDatos(recetas);
@@ -111,7 +115,7 @@ function addCategoriesDropdown (categorias) {
 // Event clicking elements in dropdown list
 contenedorDropdown.addEventListener('click', function(event) {
     const dropdown = document.querySelector('.dropdownContent');
-    const inputs = document.querySelectorAll('input#a');
+    const inputs = document.querySelectorAll('input.a');
     for (const input of inputs) {
         if (event.target === input) {
             if (!categoriasSeleccionadas.includes(input.value)) {
