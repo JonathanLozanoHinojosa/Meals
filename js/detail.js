@@ -26,6 +26,9 @@ let arrayComentarios = [];
 // Carrega inicial de l'aplicació
 addEventsToStars();
 const infosReceta = await getReceta(idReceta);
+//let a = {}
+//a["meals"] = [...infosReceta.meals]
+
 let bandera = await getFlag(infosReceta.meals[0].strArea)
 mostrarReceta(infosReceta)
 getAllFavourites(infosReceta);
@@ -244,29 +247,57 @@ function limpiarFormulario(usuario, texto) {
 
 // Gestió de rebre dades del formulari
 function validarFormulario() {
-    const inputUsername = document.querySelector('#inputUsername').value;
-    const textareaComentario = document.querySelector('#textareaComentario').value;
-    const date = new Date();
-    const day = (date.getDate() < 10 ? '0' : '') + date.getDate();
-    const month = (date.getMonth() < 10 ? '0' : '') + date.getMonth();
-    const year = date.getFullYear();
-    const hours = (date.getHours() < 10 ? '0' : '') + date.getHours();
-    const minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
-    const fecha = `${day}/${month}/${year} - ${hours}:${minutes}`;
+    const inputUsername = document.querySelector('#inputUsername');
+    const textareaComentario = document.querySelector('#textareaComentario');
     
-    if (inputUsername.length > 0 && textareaComentario.length > 0) {
+    inputUsername.classList.remove('noCumplimentado');
+    textareaComentario.classList.remove('noCumplimentado');
+    
+    // Camps buits, afegeixo clase i mostro missatge
+    let datosVacios = false;
+    let inputUser = inputUsername.value.trimStart();
+    let textAreaComent = textareaComentario.value.trimStart();
+
+    if (inputUser.length === 0) {
+        inputUsername.classList.add('noCumplimentado');
+        datosVacios = true;
+    }
+    
+    if ( textAreaComent.length === 0) {
+        textareaComentario.classList.add('noCumplimentado');
+        datosVacios = true;
+    }
+    
+    if (datosVacios === true) {
+        const errorComentario = new bootstrap.Modal(document.getElementById('camposComentarioVacio'));
+        errorComentario.show();
+        setTimeout(function(){
+            errorComentario.hide()
+        }, 2000);
+    }
+
+    // Si hi ha dades als dos camps
+    if (inputUser.length > 0 && textAreaComent.length > 0) {
+
+        const date = new Date();
+        const day = (date.getDate() < 10 ? '0' : '') + date.getDate();
+        const month = (date.getMonth() < 10 ? '0' : '') + date.getMonth();
+        const year = date.getFullYear();
+        const hours = (date.getHours() < 10 ? '0' : '') + date.getHours();
+        const minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+        const fecha = `${day}/${month}/${year} - ${hours}:${minutes}`;
 
         const div = document.querySelector('#comentariosTemplates').content;
         const listaComentarios = document.querySelector('#listaComentarios');
 
         const fr = div.cloneNode(true);
         
-        fr.querySelector("#usernameListaComentario").textContent = inputUsername;
+        fr.querySelector("#usernameListaComentario").textContent = inputUsername.value;
         fr.querySelector("#dateListaComentario").textContent = fecha;
-        fr.querySelector("#textoListaComentario").textContent = textareaComentario;
+        fr.querySelector("#textoListaComentario").textContent = textareaComentario.value;
         
         listaComentarios.appendChild(fr); // Mostrar en el DOM*/
-        guardarComentariosLocalStorage(idReceta, inputUsername, textareaComentario, fecha);
+        guardarComentariosLocalStorage(idReceta, inputUsername.value, textareaComentario.value, fecha);
         
         const modalComentario = new bootstrap.Modal(document.getElementById('modalComentario'));
         modalComentario.show();
@@ -274,6 +305,6 @@ function validarFormulario() {
             modalComentario.hide()
         }, 2000);
 
-        limpiarFormulario(inputUsername, textareaComentario);
+        limpiarFormulario(inputUsername.value, textareaComentario.value);
     }
 }
