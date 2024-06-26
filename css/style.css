@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Custom properties */
 :root {
     --colorHeader: #95BF8F;
 
@@ -16,6 +18,8 @@
     --negro: #000;
     --negrita: bold;
 }
+
+/* Reset del CSS */
 * {
     box-sizing: border-box;
     padding:0;
@@ -27,92 +31,56 @@ body {
     text-align: center;
 }
 
+/* Color de fons de la pàgina */
 html body {
     background-color: var(--colorFondo);
 }
 
+/* background del header */
 body header#header-container .bg-dark{
     background-color: var(--colorHeader) !important;
 }
 
-.navbar-brand h1 { /* Estilo al nombre de la web */
+/* Estil per al nom de la pàgina WORLD'S FOOD */
+.navbar-brand h1 {
 	color: var(--colorTitulo);
-	font-size: 1.5em; /* aumentar tamaño de la fuente */
-	text-transform: uppercase; /* mayúsculas */
-	font-weight: var(--negrita); /* negrita */
-	text-shadow: var(--sombra); /* sombra en el texto */
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: var(--negrita);
+	text-shadow: var(--sombra);
     margin:5px 0 0 10px;
 }
 
+/* Enllaços de la barra de navegació (Recipes, Favourites, Game) */
 a.nav-link {
     font-weight: var(--negrita);
     color: var(--colorFondo);
-    text-shadow: var(--sombra); /* sombra en el texto */
+    text-shadow: var(--sombra);
     padding: 10px 15px !important;
     text-align: center;
 }
 
+/* Hover als enllaços de la barra de navegació (Recipes, Favourites, Game) */
 a.nav-link:hover {
     background-color: var(--colorTextos);
     color: var(--colorFondo);
     text-shadow: var(--sombra); /* sombra en el texto */
 }
 
+/* Linea sota la opció on estem de la barra de navegació */
 a.activo {
     border-bottom: 2px solid var(--colorTextos);
 }
 
+/* Definició del contenidor de les dades */
 #main-container {
     margin-top: 2px;
     align-items: center;
     size: 80%;
 }
 
-/* Declare heights because of positioning of img element */
-.carousel-item {
-    height: 20rem;
-}
-  
-#carousel-items img {
-    height: 100%;
-    object-fit: cover;
-    object-position: bottom;
-}
-  
-button.carousel-control-next , button.carousel-control-prev, .carousel-indicators [data-bs-target] {
-    opacity: 1;
-}
-#carousel .carousel-control-next-icon, .carousel-control-prev-icon {
-    background-color:var(--colorTextos);
-}
-
-.carousel-text {
-    background-color: var(--color-40);
-    border: 1px solid var(--colorTextos);
-    color: var(--colorFondo);
-	text-shadow: var(--sombra); /* sombra en el texto */
-}
-
-.featurette-divider {
-    margin: 1rem 0; /* Space out the Bootstrap <hr> more */
-    color:var(--colorTextos)
-}
-
-@media (width < 233px) {
-    #logo {
-        display: none !important;
-    }
-}
-
-@media (min-width: 992px) {
-    .navbar-nav.navbar-center {
-      position: absolute;
-      left: 50%;
-      transform: translatex(-50%);
-    }    
-}
-
-/******** TODOS PARA PREVENIR EL SALTO DE LA BÚSQUEDA ********/
+/******** Deixar més o menys espai amb el contenidor
+depenent del salt del botó de cerca */
 
 @media (min-width: 619px) {
     #main-container, #main-content {
@@ -132,16 +100,91 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     }
 }
 
-/*************** Recipes.html **************/
+/* Ocultar el logo de la pàgina si és més petit de 233px */
+@media (width < 233px) {
+    #logo {
+        display: none !important;
+    }
+}
 
+
+/******************* MAIN.HTML **********************/
+
+/* Declaració del height per posicionar les imatges */
+.carousel-item {
+    height: 20rem;
+}
+
+/* Tamany responsiu de les imatges del carrousel */
+#carousel-items img {
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+/* Botons de següent, anterior i  indicadors inferiors */
+button.carousel-control-next , button.carousel-control-prev, .carousel-indicators [data-bs-target] {
+    opacity: 1;
+}
+
+/* Color de fons dels botons següent, anterior */
+#carousel .carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color:var(--colorTextos);
+}
+
+/* Textos dins de les imatges del carousel */
+.carousel-text {
+    background-color: var(--color-40);
+    border: 1px solid var(--colorTextos);
+    color: var(--colorFondo);
+	text-shadow: var(--sombra); /* sombra en el texto */
+}
+
+/* <hr> entre el carousel i els text */
+.featurette-divider {
+    margin: 1rem 0; /* Space out the Bootstrap <hr> more */
+    color:var(--colorTextos)
+}
+
+/* Animació del text */
+div#texto {
+    animation-duration: 1s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-timing-function: linear;
+}
+    
+@keyframes slidein {
+    from {
+        margin-left: 50%;
+    }
+        
+    to {
+        margin-left: 0%;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-nav.navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translatex(-50%);
+    }    
+}
+
+/*************** RECIPES.HTML **************/
+
+/* Definició del tile on aniran les imatges de les receptes i el nom */
 .category-tile { 
     position: relative;
-    overflow: hidden; /* overflow oculto. Si alguna cosa sobresurt. Que no es vegi */
+    overflow: hidden; /* overflow ocult. Si alguna cosa sobresurt. Que no es vegi */
     width: 200px;
     height: 200px;
     margin: 0 auto 15px; /* a dalt 0, dreta y esquerra centrat auto y a sota 15px */
 }
 
+/* Definició de propietats del nom de la recepta */
 .category-tile span.title {
     position: absolute;
     bottom: 0;
@@ -165,11 +208,7 @@ button.carousel-control-next , button.carousel-control-prev, .carousel-indicator
     color: var(--blanco);
 }
 
-a.navbar-brand h1 {
-    font-size: 1em;
-}
-
-/* Efecte quan es passa per sobre, lletra una mica més gran */
+/* Efecte quan es passa per sobre, titol de la recepta una mica més gran */
 .category-tile:hover {
     font-size: 1.2em;
 }
@@ -180,15 +219,20 @@ h1.numItems {
     font-weight: var(--negrita);
 }
 
+/* Imatge que ocupi el 100% del tile */
 .category-tile img {
     width:100%;
     height:100%;
 }
 
+/* Número de items, dropdown d'ordenació i select de categories
+en la mateixa linea */
 #ordenacionItems h1.numItems, #ordenacionItems select#select {
     display: inline-block;
 }
 
+/* Visualització del delect de categories  i ordenació depenent
+de la mida de la pantalla */
 @media (width < 330px) {
     div#ordenacionItems select#select {
         width: 80%;
@@ -214,35 +258,44 @@ h1.numItems {
     }
 }
 
+/* Deixar un espai entre el numero de receptes, ordenació i
+filtre de categories amb el secció de receptes */
 section.row{
     margin-top: 20px;
 }
 
-/****************** detail.html ******************/
+/****************** DETAIL.HTML ******************/
 
+/* Icones dins de l'element de la llista. */
 ul {
     list-style-position: inside;
 }
 
+/* text de category > area > tags més petit */
 #catAreaTag {
     font-size: 0.7em;
 }
 
+/* Bandera del pais i nom de la recepta en la mateixa linea */
 #flag, #name {
     margin-top: 20px;
     display:inline-block;
 }
 
+/* Bandera al costat del nom de la recepta */
+#nombreBandera {
+    display:flex;
+}
+
+/* Tamany responsiu bandera */
 #flag {
     height: 48px;
     object-fit: cover;
     object-position: bottom;
     padding-right: 10px;
 }
-#nombreBandera {
-    display:flex;
-}
 
+/* Imatge responsiva de la recepta */
 #image {
     height: 400px;
     object-fit: cover;
@@ -250,12 +303,15 @@ ul {
     border: 1px solid var(--colorTextos);
 }
 
+/* Instruccions */
 #instruction {
     padding-left: 10px;
 }
 
-/********************** ESTRELLAS ********************/
+/********************** ESTRELLETAS ********************/
 
+/* El contenidor de les 5 estrelletes en fila i 
+separades entre elles */
 .star-container {
     display: flex;
     flex-direction: row;
@@ -263,6 +319,7 @@ ul {
     margin-left: 40px;
 }
 
+/* Definició de cadascuna de les 5 estrelletes */
 .star {
     width: 20px;
     height: 20px;
@@ -270,28 +327,31 @@ ul {
     background-repeat: no-repeat;
     cursor: pointer;
 }
-  
+
+/* Imatge gris */
 .star-gray {
     background-image: url(../images/star-gray.png);
 }
-  
+
+/* Imatge rosa */
 .star-pink {
     background-image: url(../images/star-pink.png);
 }
 
 /********************* LIKE **********************/
 
+/* Add this recipe to ... de tipus inline 
+per possar el cor al costat */
 #textoFavorito {
     display: inline-block;
 }
 
+/* Contenidor del cor */
 .fav-container {
     display: inline-block;
-    _flex-direction: row;
-    _gap: 10px;
-    _margin-left: 40px;
 }
 
+/* Cor en si */
 .fav {
     display:inline-block;
     width: 20px;
@@ -299,19 +359,21 @@ ul {
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
-    _margin-bottom: 20px; /* REMOVE */
 }
-  
+
+/* Imatge gris del cor */
 .fav-gray {
     background-image: url(../images/fav-gray.png);
 }
-  
+
+/* Imatge rosa del cor */
 .fav-pink {
     background-image: url(../images/fav-pink.png);
 }
 
 /********************* SPINNER *******************/
 
+/* Definició del spinner */
 #spinner {
     width: 10rem;
     height: 10rem;
@@ -323,10 +385,12 @@ ul {
     animation: spin 1s infinite ease-in-out;
 }
 
+/* Mostrar spinner */
 #spinner.display {
     display:inline-block;
 }
 
+/* Rotació de la carrega */
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -336,30 +400,16 @@ ul {
     }
 }
 
-div#texto {
-    animation-duration: 1s;
-    animation-name: slidein;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-timing-function: linear;
-}
-    
-    @keyframes slidein {
-    from {
-        margin-left: 50%;
-    }
-        
-    to {
-        margin-left: 0%;
-    }
-}
 
 /********************* DROPDOWN CATEGORY *************/
+
+/* Al costat de l'ordenació si té lloc */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
+/* Definició del dropdown de categories */
 .dropdownContent {
     display: none;
     position: absolute;
@@ -369,20 +419,24 @@ div#texto {
     z-index: 1;
 }
 
+/* Quan passem per sobre de les opcions del dropdown */
 .dropdownContent :hover {
     background-color: var(--colorHeader);
 }
 
+/* Llistat d'opcions una sota l'altra */
 .dropdownContent label {
     display: block;
     padding: 5px 10px;
     cursor:pointer;
 }
 
+/* Que es desplegi el dropdown quan passem per sobre */
 .dropdown:hover .dropdownContent {
     display: block;
 }
 
+/* Color del requadret quan está seleccionat */
 input.a {
     accent-color: var(--colorHeader);
 }
@@ -393,44 +447,57 @@ input.a {
 }
 
 /************** COMENTARIS ***************/
+
+/* Espai del formulari de comentaris */
 form div, form button#botonComentario {
     margin: 10px;
 }
 
+/* Input i textarea del 50% de l'amplada */
 input#inputUsername, form div textarea{
     width: 50%;
 }
 
+/* Imatge dels comentaris al costat del nom
+d'usuari i data */
 #usernameListaComentario, #dateListaComentario {
     display:inline-block;
 }
 
+/* Data una mica més petita que el nom de l'usuari */
 #dateListaComentario{
     font-size: 90%;
 }
 
+/* Separació del botó de afegir comentari i
+els comentaris dels usuaris */
 .comentarios-formulario{
     padding-bottom: 20px;
 }
 
+/* Afegir color als bordes de l'input i textarea */
 #textareaComentario , #inputUsername {
     border-color: var(--colorTextos);
     border-radius: 0%;
 }
 
+/* Si s'envia el formulari amb camps buits */
 .noCumplimentado {
     box-shadow: 0 0 5px 1px red;
 }
 
+/* Nom d'usuari en negreta */
 #usernameListaComentario {
     font-weight: var(--negrita);
 }
 
+/* Mida de la imatge de l'usuari */
 #userImage {
     width: 25px;
 }
 
-/******** BOTONS AMB CLASE PERSONALIZADOS ************/
+/* Estil per als botons amb classe personalizados ************/
+/* Add comment, category, apply filter, search */
 button.personalizados {
     color: var(--colorTextos) !important;
     border-color: var(--colorTextos) !important;
@@ -446,6 +513,8 @@ hr {
     color: var(--colorTextos) !important;
 }
 
+/* Estil texts Ingredients & measures, Instructions, Video, 
+Favorito, Rating, Comments */
 h2 {
     font-weight: var(--negrita);
     font-size: 120em;
@@ -453,6 +522,8 @@ h2 {
     border-bottom: 1px solid var(--colorTextos);
 }
 
+/* Els elements que no arriben del template els oculto inicialment
+per a que no apareguin i nomès surti l'spinner */
 .star-container, .fav-container, .comentarios-formulario, #tituloComentario, #divFavorito, #divRating {
     visibility: hidden;
 }
