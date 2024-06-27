@@ -524,6 +524,6 @@ h2 {
 
 /* Els elements que no arriben del template els oculto inicialment
 per a que no apareguin i nomès surti l'spinner */
-.star-container, .fav-container, .comentarios-formulario, #tituloComentario, #divFavorito, #divRating {
+#ordenacionItems, .star-container, .fav-container, .comentarios-formulario, #tituloComentario, #divFavorito, #divRating {
     visibility: hidden;
 }
