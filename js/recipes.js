@@ -62,6 +62,8 @@ function mostrarDatos(recetasBackup) {
     clearDiv();
     const div = document.querySelector('#recetas').content;
     
+    document.querySelector('#ordenacionItems').style.visibility = 'visible';
+    
     // Creació del fragment
     const fragment = document.createDocumentFragment();
     
